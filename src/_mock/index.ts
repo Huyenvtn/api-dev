@@ -1,5 +1,3 @@
-import _mock from './_mock';
+export * from './_mock';
 
-// ----------------------------------------------------------------------
-
-export default _mock;
+export * from './assets';

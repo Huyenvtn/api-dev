@@ -1,6 +1,11 @@
-node_modules
-.next
+# Build directories
+build/*
+dist/*
+public/*
+**/out/*
+**/.next/*
+**/node_modules/*
+
 yarn.lock
 package-lock.json
-public
- 
+jsconfig.json

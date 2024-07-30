@@ -1,10 +1,11 @@
-// ----------------------------------------------------------------------
+/**
+ * @type {import('next').NextConfig}
+ */
 
 const nextConfig = {
-  reactStrictMode: true,
   env: {
-    DEV_API: 'http://localhost:7272',
-    PRODUCTION_API: 'https://minimal-assets-api.vercel.app',
+    DEV_API: `http://localhost:7272`,
+    PRODUCTION_API: 'https://api-dev-minimal-v6.vercel.app',
   },
 };
 

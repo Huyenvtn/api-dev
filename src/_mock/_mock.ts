@@ -1,52 +1,84 @@
-import { sub } from 'date-fns';
-//
-import { role } from './role';
-import { email } from './email';
-import { boolean } from './boolean';
-import { company } from './company';
-import { phoneNumber } from './phoneNumber';
-import { fullAddress, country } from './address';
-import { firstName, lastName, fullName } from './name';
-import { title, sentence, description } from './text';
-import { price, rating, age, percent } from './number';
-import { HOST_API } from '../../config';
+import { fSub } from 'src/utils/format-time';
+
+import { HOST_API } from 'src/config-global';
+
+import {
+  _id,
+  _ages,
+  _roles,
+  _prices,
+  _emails,
+  _ratings,
+  _nativeS,
+  _nativeM,
+  _nativeL,
+  _percents,
+  _booleans,
+  _sentences,
+  _lastNames,
+  _fullNames,
+  _tourNames,
+  _jobTitles,
+  _taskNames,
+  _fileNames,
+  _postTitles,
+  _firstNames,
+  _eventNames,
+  _courseNames,
+  _fullAddress,
+  _companyNames,
+  _productNames,
+  _descriptions,
+  _phoneNumbers,
+  _countryNames,
+} from './assets';
 
 // ----------------------------------------------------------------------
 
-const _mock = {
-  id: (index: number) => `e99f09a7-dd88-49d5-b1c8-1daf80c2d7b${index + 1}`,
-  email: (index: number) => email[index],
-  phoneNumber: (index: number) => phoneNumber[index],
-  time: (index: number) => sub(new Date(), { days: index, hours: index }),
-  boolean: (index: number) => boolean[index],
-  role: (index: number) => role[index],
-  company: (index: number) => company[index],
-  address: {
-    fullAddress: (index: number) => fullAddress[index],
-    country: (index: number) => country[index],
-  },
-  name: {
-    firstName: (index: number) => firstName[index],
-    lastName: (index: number) => lastName[index],
-    fullName: (index: number) => fullName[index],
-  },
-  text: {
-    title: (index: number) => title[index],
-    sentence: (index: number) => sentence[index],
-    description: (index: number) => description[index],
-  },
+export const _mock = {
+  id: (index: number) => _id[index],
+  time: (index: number) => fSub({ days: index, hours: index }),
+  boolean: (index: number) => _booleans[index],
+  role: (index: number) => _roles[index],
+  // Text
+  courseNames: (index: number) => _courseNames[index],
+  fileNames: (index: number) => _fileNames[index],
+  eventNames: (index: number) => _eventNames[index],
+  taskNames: (index: number) => _taskNames[index],
+  postTitle: (index: number) => _postTitles[index],
+  jobTitle: (index: number) => _jobTitles[index],
+  tourName: (index: number) => _tourNames[index],
+  productName: (index: number) => _productNames[index],
+  sentence: (index: number) => _sentences[index],
+  description: (index: number) => _descriptions[index],
+  // Contact
+  email: (index: number) => _emails[index],
+  phoneNumber: (index: number) => _phoneNumbers[index],
+  fullAddress: (index: number) => _fullAddress[index],
+  // Name
+  firstName: (index: number) => _firstNames[index],
+  lastName: (index: number) => _lastNames[index],
+  fullName: (index: number) => _fullNames[index],
+  companyNames: (index: number) => _companyNames[index],
+  countryNames: (index: number) => _countryNames[index],
+  // Number
   number: {
-    percent: (index: number) => percent[index],
-    rating: (index: number) => rating[index],
-    age: (index: number) => age[index],
-    price: (index: number) => price[index],
+    percent: (index: number) => _percents[index],
+    rating: (index: number) => _ratings[index],
+    age: (index: number) => _ages[index],
+    price: (index: number) => _prices[index],
+    nativeS: (index: number) => _nativeS[index],
+    nativeM: (index: number) => _nativeM[index],
+    nativeL: (index: number) => _nativeL[index],
   },
+  // Image
   image: {
-    cover: (index: number) => `${HOST_API}/assets/images/covers/cover_${index + 1}.jpg`,
-    feed: (index: number) => `${HOST_API}/assets/images/feeds/feed_${index + 1}.jpg`,
-    product: (index: number) => `${HOST_API}/assets/images/products/product_${index + 1}.jpg`,
-    avatar: (index: number) => `${HOST_API}/assets/images/avatars/avatar_${index + 1}.jpg`,
+    cover: (index: number) => `${HOST_API}/assets/images/cover/cover-${index + 1}.webp`,
+    avatar: (index: number) => `${HOST_API}/assets/images/avatar/avatar-${index + 1}.webp`,
+    travel: (index: number) => `${HOST_API}/assets/images/travel/travel-${index + 1}.webp`,
+    course: (index: number) => `${HOST_API}/assets/images/course/course-${index + 1}.webp`,
+    company: (index: number) => `${HOST_API}/assets/images/company/company-${index + 1}.webp`,
+    product: (index: number) => `${HOST_API}/assets/images/m-product/product-${index + 1}.webp`,
+    portrait: (index: number) => `${HOST_API}/assets/images/portrait/portrait-${index + 1}.webp`,
   },
 };
-
-export default _mock;

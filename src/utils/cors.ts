@@ -1,12 +1,28 @@
-import Cors from 'cors';
-import initMiddleware from './init-middleware';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-// Initialize the cors middleware
+import Cors from 'cors';
+
+// ----------------------------------------------------------------------
+
+type Middleware = (req: NextApiRequest, res: NextApiResponse, next: (result: any) => void) => void;
+
+const initMiddleware = (middleware: Middleware) => (req: NextApiRequest, res: NextApiResponse) =>
+  new Promise<void>((resolve, reject) => {
+    middleware(req, res, (result: any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve();
+    });
+  });
+
+// ----------------------------------------------------------------------
+
+// You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
   Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    methods: ['GET', 'POST', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   })
 );
 

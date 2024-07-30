@@ -1,61 +1,10 @@
-import { sample } from 'lodash';
-// @types
-import { Mail, MailLabel } from 'src/@types/mail';
-// config
-import { HOST_API } from '../../config';
-// _mock
-import _mock from '.';
+import { _mock } from './_mock';
+import { _files } from './_files';
 
 // ----------------------------------------------------------------------
 
-const createLabelIds = (index: number) => {
-  if (index === 1) {
-    return ['id_promotions', 'id_forums'];
-  }
-  if (index === 2) {
-    return ['id_forums'];
-  }
-  if (index === 5) {
-    return ['id_social'];
-  }
-  return [];
-};
-
-const createAttachment = (index: number) => {
-  if (index === 1) {
-    return [_mock.image.feed(1), _mock.image.feed(2)];
-  }
-  if (index === 2) {
-    return [
-      'https://mail.google.com/mail/u/file1.docx',
-      'https://mail.google.com/mail/u/file2.xlsx',
-      'https://mail.google.com/mail/u/file3.pptx',
-      'https://mail.google.com/mail/u/file7.sketch',
-    ];
-  }
-  if (index === 5) {
-    return [
-      _mock.image.feed(1),
-      _mock.image.feed(2),
-      `${HOST_API}/assets/images/avatars/avatar_12.mp4`,
-      'https://mail.google.com/mail/u/file1.docx',
-      'https://mail.google.com/mail/u/file2.xlsx',
-      'https://mail.google.com/mail/u/file3.pptx',
-      'https://mail.google.com/mail/u/file4.pdf',
-      'https://mail.google.com/mail/u/file5.psd',
-      'https://mail.google.com/mail/u/file6.esp',
-      'https://mail.google.com/mail/u/file7.sketch',
-    ];
-  }
-  return [];
-};
-
-const FOLDER = ['promotions', 'spam', 'inbox', 'folder'];
-
-// ----------------------------------------------------------------------
-
-export const labels: MailLabel[] = [
-  { id: 'all', type: 'system', name: 'all mail', unreadCount: 3 },
+export const _labels = [
+  { id: 'all', type: 'system', name: 'all', unreadCount: 3 },
   { id: 'inbox', type: 'system', name: 'inbox', unreadCount: 1 },
   { id: 'sent', type: 'system', name: 'sent', unreadCount: 0 },
   { id: 'drafts', type: 'system', name: 'drafts', unreadCount: 0 },
@@ -63,89 +12,50 @@ export const labels: MailLabel[] = [
   { id: 'spam', type: 'system', name: 'spam', unreadCount: 1 },
   { id: 'important', type: 'system', name: 'important', unreadCount: 1 },
   { id: 'starred', type: 'system', name: 'starred', unreadCount: 1 },
-  {
-    id: 'id_social',
-    type: 'custom',
-    name: 'social',
-    unreadCount: 0,
-    color: '#00AB55',
-  },
-  {
-    id: 'id_promotions',
-    type: 'custom',
-    name: 'promotions',
-    unreadCount: 2,
-    color: '#1890FF',
-  },
-  {
-    id: 'id_forums',
-    type: 'custom',
-    name: 'forums',
-    unreadCount: 1,
-    color: '#FFC107',
-  },
+  { id: 'social', type: 'custom', name: 'social', unreadCount: 0, color: '#00AB55' },
+  { id: 'promotions', type: 'custom', name: 'promotions', unreadCount: 2, color: '#FFC107' },
+  { id: 'forums', type: 'custom', name: 'forums', unreadCount: 1, color: '#FF4842' },
 ];
 
-export const mails = [...Array(9)].map((_, index) => ({
-  id: _mock.id(index),
-  labelIds: createLabelIds(index + 1),
-  folder: sample(FOLDER),
-  isImportant: _mock.boolean(index),
-  isStarred: _mock.boolean(index),
-  isUnread: _mock.boolean(index),
-  subject: _mock.text.title(index),
-  message: _mock.text.sentence(index),
-  createdAt: _mock.time(index),
-  files: createAttachment(index),
-  from: {
-    name: _mock.name.fullName(index),
+export const _mails = [...Array(9)].map((_, index) => {
+  const attachments =
+    (index === 1 && _files.slice(0, 2)) ||
+    (index === 2 && _files.slice(0, 4)) ||
+    (index === 5 && _files.slice(4, 10)) ||
+    [];
+
+  const folder =
+    ([1, 2].includes(index) && 'spam') || ([3, 4].includes(index) && 'sent') || 'inbox';
+
+  const labelIds =
+    (index === 1 && ['promotions', 'forums']) ||
+    (index === 2 && ['forums']) ||
+    (index === 5 && ['social']) ||
+    [];
+
+  const from = {
+    name: _mock.fullName(index),
     email: _mock.email(index),
-    avatar:
-      index === 1 || index === 2 || index === 5 || index === 6 || index === 8
-        ? null
-        : _mock.image.avatar(index),
-  },
-  to: [
-    {
-      name: 'Jaydon Frankie',
-      email: 'demo@minimals.cc',
-      avatar: null,
-    },
-  ],
-}));
+    avatarUrl: [1, 2, 6].includes(index) ? null : _mock.image.avatar(index),
+  };
 
-// ----------------------------------------------------------------------
+  const to = [
+    { name: 'Jaydon Frankie', email: 'demo@minimals.cc', avatarUrl: null },
+    { name: _mock.fullName(12), email: _mock.email(12), avatarUrl: _mock.image.avatar(12) },
+  ];
 
-export const filterMails = (
-  mails: Mail[],
-  labels: MailLabel[],
-  systemLabel: string,
-  customLabel: string | undefined
-) => {
-  if (customLabel) {
-    const label = labels.find((_label) => _label.name === customLabel);
-    if (!label) {
-      return [];
-    }
-    return mails.filter((mail) => mail.labelIds.includes(label.id));
-  }
-
-  if (systemLabel === 'all') {
-    return mails;
-  }
-
-  if (['starred', 'important'].includes(systemLabel)) {
-    if (systemLabel === 'starred') {
-      return mails.filter((mail) => mail.isStarred);
-    }
-    if (systemLabel === 'important') {
-      return mails.filter((mail) => mail.isImportant);
-    }
-  }
-
-  if (['inbox', 'sent', 'drafts', 'trash', 'spam', 'starred'].includes(systemLabel)) {
-    return mails.filter((mail) => mail.folder === systemLabel);
-  }
-
-  return [];
-};
+  return {
+    id: _mock.id(index),
+    to,
+    from,
+    folder,
+    labelIds,
+    attachments,
+    createdAt: _mock.time(index),
+    subject: _mock.postTitle(index),
+    isUnread: [1, 3].includes(index),
+    isImportant: _mock.boolean(index),
+    message: _mock.description(index),
+    isStarred: _mock.boolean(index + 2),
+  };
+});
