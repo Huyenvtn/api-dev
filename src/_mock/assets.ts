@@ -671,3 +671,61 @@ export const _descriptions = [
   `Ipsam aliquam velit nobis repellendus officiis aut deserunt id et. Nihil sunt aut dolores aut. Dolores est ipsa quia et laborum quidem laborum accusamus id. Facilis odit quod hic laudantium saepe omnis nisi in sint. Sed cupiditate possimus id.`,
   `Magnam non eveniet optio optio ut aliquid atque. Velit libero aspernatur quis laborum consequatur laudantium. Tempora facere optio fugit accusantium ut. Omnis aspernatur reprehenderit autem esse ut ut enim voluptatibus.`,
 ];
+
+// ----------------------------------------------------------------------
+
+export const _firstnames = [
+  `Urban Explorer Sneakers`,
+  `Classic Leather Loafers`,
+  `Mountain Trekking Boots`,
+  `Elegance Stiletto Heels`,
+  `Comfy Running Shoes`,
+  `Chic Ballet Flats`,
+  `Vintage Oxford Shoes`,
+  `Waterproof Hiking Boots`,
+  `Casual Slip-On Sneakers`,
+  `Premium Dress Shoes`,
+  `Sporty Trail Runners`,
+  `Sophisticated Brogues`,
+  `Beach Sandals`,
+  `Stylish Wedge Heels`,
+  `Lightweight Training Shoes`,
+  `Luxurious Moccasins`,
+  `Durable Work Boots`,
+  `Trendy Platform Sneakers`,
+  `Cozy Winter Boots`,
+  `Fashion Ankle Boots`,
+  `Breathable Tennis Shoes`,
+  `Elegant Evening Pumps`,
+  `Modern Skate Shoes`,
+  `Comfortable Walking Shoes`,
+];
+
+// ----------------------------------------------------------------------
+
+export const _lastnames = [
+  `Urban Explorer Sneakers`,
+  `Classic Leather Loafers`,
+  `Mountain Trekking Boots`,
+  `Elegance Stiletto Heels`,
+  `Comfy Running Shoes`,
+  `Chic Ballet Flats`,
+  `Vintage Oxford Shoes`,
+  `Waterproof Hiking Boots`,
+  `Casual Slip-On Sneakers`,
+  `Premium Dress Shoes`,
+  `Sporty Trail Runners`,
+  `Sophisticated Brogues`,
+  `Beach Sandals`,
+  `Stylish Wedge Heels`,
+  `Lightweight Training Shoes`,
+  `Luxurious Moccasins`,
+  `Durable Work Boots`,
+  `Trendy Platform Sneakers`,
+  `Cozy Winter Boots`,
+  `Fashion Ankle Boots`,
+  `Breathable Tennis Shoes`,
+  `Elegant Evening Pumps`,
+  `Modern Skate Shoes`,
+  `Comfortable Walking Shoes`,
+];
