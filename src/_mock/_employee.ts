@@ -23,7 +23,10 @@ export const _employees = [...Array(20)].map((_, index) => {
     contract,
     manager,
     identifier,
+    birthday: _mock.time(index),
     dateHired: _mock.time(index),
+    phoneNumber: _mock.phoneNumber(index),
+    address: _mock.fullAddress(index),
     position,
   };
 });
