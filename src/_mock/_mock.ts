@@ -31,9 +31,9 @@ import {
   _descriptions,
   _phoneNumbers,
   _countryNames,
-  _firstnames,
-  _lastnames,
+  _skypes,
 } from './assets';
+import _ from 'lodash';
 
 // ----------------------------------------------------------------------
 
@@ -53,8 +53,7 @@ export const _mock = {
   productName: (index: number) => _productNames[index],
   sentence: (index: number) => _sentences[index],
   description: (index: number) => _descriptions[index],
-  firstname: (index: number) => _firstnames[index],
-  lastname: (index: number) => _lastnames[index],
+  skype: (index: number) => _skypes[index],
   // Contact
   email: (index: number) => _emails[index],
   phoneNumber: (index: number) => _phoneNumbers[index],

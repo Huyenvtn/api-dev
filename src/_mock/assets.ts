@@ -614,6 +614,32 @@ export const _eventNames = [
   `Wedding Expo`,
 ];
 
+export const _skypes = [
+  `live:.cid.6ba743adgtryhtyjhg`,
+  `live:.cid.s6rthy56utry56y56`,
+  `live:.cid.c6g45y45tgyy45g2`,
+  `live:.cid.t6g45y45tgyy45g`,
+  `live:.cid.n6g45y45tgyy45g`,
+  `live:.cid.m6g45y45tgyy45g`,
+  `live:.cid.k6g45y45tgyy45g`,
+  `live:.cid.96g45y45tgyy45g`,
+  `live:.cid.76g45y45tgyy45g`,
+  `live:.cid.46g45y45tgyy45g`,
+  `live:.cid.16g45y45tgyy45g`,
+  `live:.cid.126g45y45tgyy45g`,
+  `live:.cid.16g45y45tgyy45g`,
+  `live:.cid.16g45y45tgyy45g`,
+  `live:.cid.36g45y45tgyy45g`,
+  `live:.cid.ew6g45y45tgyy45g`,
+  `live:.cid.236g45y45tgyy45g`,
+  `live:.cid.j6g45y45tgyy45g`,
+  `live:.cid.s6g45y45tgyy45g`,
+  `live:.cid.f6g45y45tgyy45g`,
+  `live:.cid.86g45y45tgyy45g`,
+  `live:.cid.e6g45y45tgyy45g`,
+  `live:.cid.d6g45y45tgyy45g`,
+  `live:.cid.46g45y45tgyy45g`,
+];
 // ----------------------------------------------------------------------
 
 export const _sentences = [
