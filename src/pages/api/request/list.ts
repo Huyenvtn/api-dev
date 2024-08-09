@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       requests: _requests,
     });
   } catch (error) {
-    console.error('[Product API]: ', error);
+    console.error('[Request API]: ', error);
     res.status(500).json({
       message: 'Internal server error',
     });
